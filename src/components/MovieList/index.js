@@ -6,27 +6,27 @@ const MovieList = ({ category }) => {
   const [movies] = useState([
     {
       name: 'TheExorcist',
-      category: 'horror ',
+      category: 'horror',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
     },
     {
       name: 'The-Conjuring',
-      category: 'horror ',
+      category: 'horror',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
     },
     {
       name: 'The-Shining',
-      category: 'horror ',
+      category: 'horror',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
     },
     {
       name: 'Texas-Chainsaw-Massacre',
-      category: 'horror ',
+      category: 'horror',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
     },
     {
       name: 'Sinister',
-      category: 'horror ',
+      category: 'horror',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
     },
     {

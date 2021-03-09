@@ -2,7 +2,7 @@ import React from 'react';
 import MovieList from '../MovieList';
 import { capitalizeFirstLetter } from '../../utils/helpers';
 
-function Gallery(props) {
+function Movies(props) {
   const { currentCategory } = props;
   return (
     <section>
@@ -12,4 +12,4 @@ function Gallery(props) {
     </section>
   );
 }
-export default Gallery;
+export default Movies;

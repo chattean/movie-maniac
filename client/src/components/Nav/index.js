@@ -25,7 +25,7 @@ function Nav(props) {
           </Link>
           </li>
           <li className="mx-1">
-            <a href="/" onclick={() => Auth.logout()}>
+            <a href="/" onClick={() => Auth.logout()}>
               Logout
           </a>
           </li>

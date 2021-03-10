@@ -1,0 +1,1 @@
+export default { loggedIn: () => false }

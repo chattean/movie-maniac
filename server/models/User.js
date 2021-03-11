@@ -22,7 +22,19 @@ const userSchema = new Schema({
         // _id:
         type: Schema.Types.ObjectId,
         ref: 'Movie',
-    },]
+    },],
+    comments:[{
+        // reference the movie model
+        // _id:
+        movieId:{
+            type: Schema.Types.ObjectId,
+            ref: 'Movie'
+        },
+        commentId:{
+            type: Schema.Types.ObjectId,
+            ref: 'Movie.comments'
+        }
+    },],
 },
 // Create a virtual called MovieCount that retrieves the length of the user's friends array field on query.
 {

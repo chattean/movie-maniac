@@ -99,14 +99,14 @@ const movieController = {
         .catch(err => res.status(500).json(err));
     },
 
-    //Add a Reaction
-    createReaction({params, body}, res) {
+    //Add a Comment
+    createComment({params, body}, res) {
         Movie.findOneAndUpdate(
             { 
               _id: params.movieId 
             },
             { 
-                $addToSet: { reactions: body } 
+                $addToSet: { comments: body } 
             },
             { 
                 runValidators: true, 
@@ -124,11 +124,11 @@ const movieController = {
             res.status(500).json(err);
           });
       },
-    //Delete a Reaction
-    deleteReaction(req, res) {
+    //Delete a Comment
+    deleteComment(req, res) {
         Movie.findOneAndUpdate(
           { _id: req.params.movieId },
-          { $pull: { reactions: { reactionId: req.params.reactionId } } },
+          { $pull: { comments: { commentId: req.params.commentId } } },
           { runValidators: true, new: true }
         )
           .then((dbMovieData) => {

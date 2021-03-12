@@ -6,6 +6,8 @@ import ContactForm from './components/Contact';
 
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import { Switch, Route } from 'react-router-dom';
+
 
 function App() {
   const [categories] = useState([
@@ -30,12 +32,12 @@ function App() {
         currentCategory={currentCategory}
         contactSelected={contactSelected}
         setContactSelected={setContactSelected}
-      >
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-        </Switch>
-      </Nav>
+      />
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+      </Switch>
+
       <main>
         {!contactSelected ? (
           <>

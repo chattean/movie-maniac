@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+// import { capitalizeFirstLetter } from '../../utils/helpers';
+import { ADD_TO_WATCHLIST } from '../../utils/actions';
+// import reducers from "../../utils/reducers"
+import { idbPromise } from "../../utils/helpers"
+import { useDispatch, useSelector } from "react-redux";
+
+
 // import Movies from "../Movies";
 
 const MovieList = ({ category }) => {
@@ -84,6 +91,32 @@ const MovieList = ({ category }) => {
 
   const currentMovie = movies.filter((movie) => movie.category === category);
 
+  const dispatch = useDispatch();
+  const state = useSelector(state => state);
+
+  const {
+    image,
+    name,
+    _id,
+
+  } = movies;
+
+  const { watchList } = state
+
+  const addToWatchList = (movie) => {
+    const movieOnList = MovieList.find((movieListItem) => movieListItem._id === _id)
+    if (movieOnList) {
+      // tell user the movie is already on the list
+    } else {
+      // not on list put it on the list
+      dispatch({
+        type: ADD_TO_WATCHLIST,
+        product: { ...movie, addedQuantity: 1 }
+      });
+      idbPromise('watchlist', 'put', { ...movie, addedQuantity: 1 });
+    }
+  }
+  const { currentCategory } = movies;
   return (
     <div>
       <div className="flex-row">
@@ -96,6 +129,9 @@ const MovieList = ({ category }) => {
           />
         ))}
       </div>
+      <button onClick={addToWatchList}>Add to Watch List</button>
+
+      <button><span role="img" aria-label="heart">💚</span></button>
     </div>
   );
 };

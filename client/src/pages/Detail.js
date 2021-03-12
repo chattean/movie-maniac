@@ -59,18 +59,18 @@ function Detail() {
             dispatch({
                 type: UPDATE_WATCHLIST_QUANTITY,
                 _id: id,
-                purchaseQuantity: parseInt(movieOnList.purchaseQuantity) + 1
+                addedQuantity: parseInt(movieOnList.addedQuantity) + 1
             });
             idbPromise('watchList', 'put', {
                 ...movieOnList,
-                purchaseQuantity: parseInt(movieOnList.purchaseQuantity) + 1
+                addedQuantity: parseInt(movieOnList.addedQuantity) + 1
             });
         } else {
             dispatch({
                 type: ADD_TO_WATCHLIST,
-                movie: { ...currentMovie, purchaseQuantity: 1 }
+                movie: { ...currentMovie, addedQuantity: 1 }
             });
-            idbPromise('watchList', 'put', { ...currentMovie, purchaseQuantity: 1 });
+            idbPromise('watchList', 'put', { ...currentMovie, addedQuantity: 1 });
 
         }
     }

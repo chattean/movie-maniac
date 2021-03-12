@@ -1,29 +1,30 @@
 {
-  "name": "movie-maniac",
-  "version": "0.1.0",
-  "private": true,
+  "name": "movie-manic",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "npm run start:server",
+    "dev": "npx concurrently \"npm:watch:server\" \"npm:start:client\"",
+    "start:server": "cd ./server && npm start",
+    "start:client": "cd ./client && npm start",
+    "watch:server": "cd ./server && npm watch",
+    "install:server": "cd ./server && npm i",
+    "install:client": "cd ./client && npm i",
+    "postinstall": "npx concurrently \"npm:install:server\" \"npm:install:client\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chattean/movie-maniac.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chattean/movie-maniac/issues"
+  },
+  "homepage": "https://github.com/chattean/movie-maniac#readme"
 }

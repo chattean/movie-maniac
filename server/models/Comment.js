@@ -29,5 +29,7 @@ const commentSchema = new Schema(
     id: false
   }
 );
+const Comment = mongoose.model('Comment', categorySchema);
 
-module.exports = commentSchema;
+
+module.exports = Comment;

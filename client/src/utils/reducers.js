@@ -14,7 +14,7 @@ export const reducers = (state = initialState, action) => {
 
                 watchList: [...state.watchList, action.movie],
             };
-        case REMOVE_FROM_CART:
+        case REMOVE_FROM_WATCHLIST:
             let newState = state.watchList.filter(movie => {
                 return movie._id !== action._id;
             });

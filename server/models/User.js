@@ -3,11 +3,23 @@ const { Schema, model } = require('mongoose');
 
 
 const userSchema = new Schema({
-    username:{
+    userName:{
         type: String,
         unique: true,
         trim: true, 
         required: true,
+    },
+    firstName:{
+        type: String, 
+        required: true,
+        minlength: 1, 
+        maxlength: 30,
+    },
+    lastName:{
+        type: String, 
+        required: true,
+        minlength: 1, 
+        maxlength: 40,
     },
     email:{
         // validation for mongoose

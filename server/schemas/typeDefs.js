@@ -16,9 +16,9 @@ const typeDefs = gql`
     category: Category
   }
 
-  type MovieList {
+  type Comment {
     _id: ID
-    movieList: [Movies]
+    comments: [Movie]
   }
 
   type User {
@@ -27,7 +27,7 @@ const typeDefs = gql`
     lastName: String
     userName: String
     email: String
-    movieList: [Movies]
+    movieList: [Movie]
   }
 
   type Auth {
@@ -37,16 +37,19 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    movies(category: ID, name: String): [Movies]
+    movies(category: ID, name: String): [Movie]
     movie(_id: ID!): Movie
     user: User
-    movieList(_id: ID!): MovieList    
+    movieList(_id: ID!): [Movie]
+    comment: [Comment]    
   }
 
   type Mutation {
-    addUser(userName:String!,firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addToWatchList(movies: [ID]!): Movies
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    updateUser(firstName: String, lastName: String, email: String, password: String): User
+    addToWatchList(movies: [ID]!): Movie
     login(email: String!, password: String!): Auth
+    addComment(comments: [ID]!): Comment
   }
 `;
 

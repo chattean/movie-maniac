@@ -3,6 +3,7 @@ const { Schema, model } = require('mongoose')
 const dateFormat = require('../utils/dateFormat')
 const commentSchema = require('./Comment');
 const movieCategories = ['horror', 'drama', 'comedy']
+const commentSchema = require('./Comment')
 
 const movieSchema = new Schema({
     movieTitle: {

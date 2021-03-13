@@ -2,6 +2,7 @@
 const { Schema, model } = require('mongoose')
 const dateFormat = require('../utils/dateFormat')
 const movieCategories = ['horror', 'drama', 'comedy']
+const commentSchema = require('./Comment')
 
 const movieSchema = new Schema({
     movieTitle: {
@@ -47,7 +48,7 @@ movieSchema.virtual('commentCount').get(function () {
 });
 
 // create the movie model using the UserSchema
-const Movie = model('Movie', MovieSchema);
+const Movie = model('Movie', movieSchema);
 Movie.getCategories()
 // export the movie model
 module.exports = Movie;

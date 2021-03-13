@@ -3,12 +3,11 @@ import { Provider } from "react-redux";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import Nav from './components/Nav';
-// import About from './components/About';
 import Movies from './components/Movies';
-import ContactForm from './components/Contact';
 import store from "./utils/store";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Home from "./pages/Home"
 import { Switch, Route } from 'react-router-dom';
 import MovieList from './components/MovieList';
 
@@ -55,6 +54,7 @@ function App() {
           <Switch>
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/" component={Home} />
           </Switch>
 
           <main>
@@ -67,6 +67,7 @@ function App() {
               <MovieList></MovieList>
             )}
           </main>
+
         </Provider>
       </div>
     </ApolloProvider>

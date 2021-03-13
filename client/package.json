@@ -2,7 +2,8 @@
   "name": "mern-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:3000/",
+  "port": "3001",
   "dependencies": {
     "@apollo/client": "^3.3.11",
     "@apollo/react-hooks": "^4.0.0",
@@ -11,6 +12,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "apollo-boost": "^0.4.9",
     "graphql": "^14.7.0",
     "jwt-decode": "^2.2.0",
     "react": "^16.13.1",

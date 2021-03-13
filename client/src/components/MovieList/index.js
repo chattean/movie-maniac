@@ -89,7 +89,7 @@ const MovieList = ({ category }) => {
 
   ]);
 
-  const currentMovie = movies.filter((movie) => movie.category === category);
+  const currentCategory = movies.filter((movie) => movie.category === category);
 
   const dispatch = useDispatch();
   const state = useSelector(state => state);
@@ -116,24 +116,34 @@ const MovieList = ({ category }) => {
       idbPromise('watchlist', 'put', { ...movie, addedQuantity: 1 });
     }
   }
-  const { currentCategory } = movies;
-  return (
-    <div>
-      <div className="flex-row">
-        {currentMovie.map((movie, i) => (
-          <img
-            src={require(`../../assets/${category}/${i}.jpg`).default}
-            alt={movie.name}
-            className="img-thumbnail mx-1"
-            key={movie.name}
-          />
-        ))}
+  // const { currentCategory } = movies;
+  if (!currentCategory) {
+    return (
+      <div>
+        <MovieList />
       </div>
-      <button onClick={addToWatchList}>Add to Watch List</button>
 
-      <button><span role="img" aria-label="heart">💚</span></button>
-    </div>
-  );
+    )
+  } else {
+    return (
+      <div>
+        <div className="flex-row">
+          {currentCategory.map((movie, i) => (
+            <img
+              src={require(`../../assets/${category}/${i}.jpg`).default}
+              alt={movie.name}
+              className="img-thumbnail mx-1"
+              key={movie.name}
+            />
+          ))}
+          <button onClick={addToWatchList}>Add to Watch List</button>
+
+          <button><span role="img" aria-label="heart">💚</span></button>
+        </div>
+
+      </div>
+    );
+  };
 };
 
 export default MovieList;

@@ -10,15 +10,22 @@ function Signup(props) {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
-        const mutationResponse = await addUser({
-            variables: {
-                email: formState.email, password: formState.password,
-                firstName: formState.firstName, lastName: formState.lastName
-            }
-        });
+        try {
+            const mutationResponse = await addUser({
+                variables: {
+                    email: formState.email,
+                    password: formState.password,
+                    firstName: formState.firstName,
+                    lastName: formState.lastName,
+                    userName: formState.userName
+                }
+            });
 
-        const token = mutationResponse.data.addUser.token;
-        Auth.login(token);
+            const token = mutationResponse.data.addUser.token;
+            Auth.login(token);
+        } catch (err) {
+            console.error(err)
+        }
     };
 
     const handleChange = event => {
@@ -56,7 +63,17 @@ function Signup(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div ClassName="flex-row space-between my-2">
+                <div className="flex-row space-between my-2">
+                    <label htmlFor="firstName">User Name:</label>
+                    <input
+                        placeholder="Pick a fun user name"
+                        name="userName"
+                        type="userName"
+                        id="userName"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="flex-row space-between my-2">
                     <label htmlFor="email">Email:</label>
                     <input
                         placeholder="youremail@emial.com"
@@ -66,7 +83,7 @@ function Signup(props) {
                         onChange={handleChange}
                     />
                 </div>
-                <div ClassName="flex-row space-between my-2">
+                <div className="flex-row space-between my-2">
                     <label htmlFor="password">Password:</label>
                     <input
                         placeholder="*****"

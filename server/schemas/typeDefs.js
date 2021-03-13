@@ -25,6 +25,7 @@ const typeDefs = gql`
     _id: ID
     firstName: String
     lastName: String
+    userName: String
     email: String
     movieList: [Movies]
   }
@@ -43,7 +44,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+    addUser(userName:String!,firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addToWatchList(movies: [ID]!): Movies
     login(email: String!, password: String!): Auth
   }

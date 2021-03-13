@@ -1,9 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const { ApolloServer } = require("apollo-server-express");
+const { typeDefs, resolvers } = require("./schemas");
+// require('dotenv').config()
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
+apolloServer.applyMiddleware({ app })
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));

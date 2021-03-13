@@ -1,5 +1,10 @@
-const { Schema, Types } = require('mongoose');
+// const { Schema, Types } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const Types = mongoose.Types;
+
+
 
 const commentSchema = new Schema(
   {
@@ -29,7 +34,7 @@ const commentSchema = new Schema(
     id: false
   }
 );
-const Comment = mongoose.model('Comment', categorySchema);
+// const Comment = mongoose.model('Comment', commentSchema);
 
 
-module.exports = Comment;
+module.exports = commentSchema;

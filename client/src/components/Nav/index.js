@@ -1,5 +1,5 @@
 import React from 'react';
-import background from '../../assets/cover/cover-image.jpg';
+import background from '../../assets/cover/cover-image2.jpg';
 import { capitalizeFirstLetter } from '../../utils/helpers';
 import Auth from "../../utils/auth";
 import { Link } from 'react-router-dom';
@@ -51,16 +51,16 @@ function Nav(props) {
 
   return (
     <header className="flex-row px-1" style={{ backgroundImage: `url(${background})`, height: '250px' }}>
-      <h2>
+      <h2 className="flex-row">
         <a data-testid="link" href="/">
           <span role="img" aria-label="camera"> </span> Let's watch a movie!
         </a>
-      </h2>
+      </h2 >
       <nav>
         <ul className="flex-row">
           <li className="mx-2">
-            <a data-testid="about" href="#about" onClick={() => setContactSelected(false)}>
-              About
+            <a data-testid="home" href="#home" onClick={() => setContactSelected(false)}>
+              Home
             </a>
           </li>
           {categories.map((category) => (
@@ -82,7 +82,7 @@ function Nav(props) {
           {showLogin()}
         </ul>
       </nav>
-    </header>
+    </header >
   );
 }
 

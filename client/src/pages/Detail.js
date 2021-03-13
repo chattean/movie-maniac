@@ -54,10 +54,10 @@ function Detail() {
 
     const addToWatchList = () => {
         const movieOnList = watchList.find((watchListItem) => watchListItem._id === id)
-        // how can i rewrite this?
+        // how can i rewrite this? i need to alert the user if the movie is already on the watch list
         if (movieOnList) {
             dispatch({
-                type: UPDATE_WATCHLIST_QUANTITY,
+                type: UPDATE_WATCHLIST,
                 _id: id,
                 addedQuantity: parseInt(movieOnList.addedQuantity) + 1
             });
@@ -119,7 +119,11 @@ function Detail() {
             {
                 loading ? <img src={spinner} alt="loading" /> : null
             }
-
+            <ul>
+                <li>
+                    see comments here
+                </li>
+            </ul>
         </>
     );
 };

@@ -9,24 +9,33 @@ export function validateEmail(email) {
 
 export function idbPromise(storeName, method, object) {
   return new Promise((resolve, reject) => {
-    const request = window.indexedDB.open('movie-manic', 1);
-    let db, tx, store;
+    // open connection to the database `movie-db` with the version of 1
+    const request = window.indexedDB.open('movie-db', 1);
+    // create variables to hold reference to the database, transaction (tx), and object store
+    let db, transaction, store;
+
+    // if version has changed (or if this is the first time using the database), run this method and create the three object stores 
     request.onupgradeneeded = function (e) {
-      const db = request.result;
-      db.createObjectStore('movie', { keyPath: '_id' });
-      db.createObjectStore('categories', { keyPath: '_id' });
-      db.createObjectStore('watchlist', { keyPath: '_id' });
+      const db = e.target.result;
+      db.createObjectStore('movie', { keyPath: '_id', autoIncrement: true });
+      db.createObjectStore('categories', { keyPath: '_id', autoIncrement: true });
+      db.createObjectStore('watchlist', { keyPath: '_id', autoIncrement: true });
     };
 
+    // handle any errors with connecting
     request.onerror = function (e) {
       console.log('There was an error');
     };
 
+    // on database open success
     request.onsuccess = function (e) {
-      db = request.result;
-      tx = db.transaction(storeName, 'readwrite');
-      store = tx.objectStore(storeName);
-
+      // save a reference of the database to the `db` variable
+      db = e.target.result;
+      // save a reference of the database to the `db` variable
+      transaction = db.transaction(storeName, 'readwrite');
+      // save a reference to that object store
+      store = transaction.objectStore(storeName);
+      // if there's any errors, let us know
       db.onerror = function (e) {
         console.log('error', e);
       };
@@ -49,8 +58,8 @@ export function idbPromise(storeName, method, object) {
           console.log('No valid method');
           break;
       }
-
-      tx.oncomplete = function () {
+      // when the transaction is complete, close the connection
+      transaction.oncomplete = function () {
         db.close();
       };
     };

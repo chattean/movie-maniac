@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose')
 const dateFormat = require('../utils/dateFormat')
 const commentSchema = require('./Comment');
 const movieCategories = ['horror', 'drama', 'comedy']
-const commentSchema = require('./Comment')
+
 
 const movieSchema = new Schema({
     movieTitle: {
@@ -26,6 +26,9 @@ const movieSchema = new Schema({
         type: Date,
         default: Date.now,
         $gte: dateFormat()
+    },
+    description: {
+        type: String
     },
     // Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
     comments:
@@ -50,6 +53,6 @@ movieSchema.virtual('commentCount').get(function () {
 
 // create the movie model using the UserSchema
 const Movie = model('Movie', movieSchema);
-Movie.getCategories()
+
 // export the movie model
 module.exports = Movie;

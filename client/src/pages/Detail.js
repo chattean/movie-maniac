@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     REMOVE_FROM_WATCHLIST,
     ADD_TO_WATCHLIST,
-
+    UPDATE_MOVIES,
 } from "../utils/actions";
 import { QUERY_MOVIES } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";

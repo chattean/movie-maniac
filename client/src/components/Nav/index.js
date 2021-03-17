@@ -1,8 +1,8 @@
 import React from 'react';
-import background from '../../assets/cover/cover-image2.jpg';
 import { capitalizeFirstLetter } from '../../utils/helpers';
 import Auth from "../../utils/auth";
 import { Link } from 'react-router-dom';
+
 
 
 
@@ -50,7 +50,7 @@ function Nav(props) {
   }
 
   return (
-    <header className="flex-row px-1" style={{ backgroundImage: `url(${background})`, height: '250px' }}>
+    <header className="header" >
       <h2 className="flex-row">
         <a data-testid="link" href="/">
           <span role="img" aria-label="camera"> </span> Let's watch a movie!

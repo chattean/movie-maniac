@@ -47,7 +47,7 @@ body {
   line-height: 1.5;
   font-size: 18px;
   letter-spacing: .1em;
-  background: rgb(42, 42, 58);
+  background: rgb(82, 82, 83);
   color: black;
   text-shadow: rgb(89, 116, 138) 5px 3px 8px;
     font-family: 'Poiret One', cursive;
@@ -105,13 +105,25 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
 header {
-  width: 100%;
+  padding: 20px 35px;
+  background-color: #7b9699;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
   height: 250px;
-  background-size: 100% 100%;
-  background-repeat: no-repeat
+  position: -webkit-sticky;
+  background-image: url("./assets/cover/cover-image.jpg");
+      
+  background-size: cover;
+  background-position: center 80%;
+  background-attachment: fixed;
+  z-index: 9999;
 }
+
+
 
 header a {
   color: black;
@@ -205,6 +217,11 @@ textarea {
 
 .flex-end {
   justify-content: flex-end;
+}
+
+.movie{
+  padding: 5px;
+  margin: 10px;
 }
 
 .mx-1 {

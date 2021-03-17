@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { capitalizeFirstLetter } from '../../utils/helpers';
 import { ADD_TO_WATCHLIST } from '../../utils/actions';
 // import reducers from "../../utils/reducers"
-import { idbPromise } from "../../utils/helpers"
+import { idbPromise } from "../../utils/helpers";
 import { useDispatch, useSelector } from "react-redux";
-
+import { QUERY_MOVIES } from "../../utils/queries";
+import { useQuery } from '@apollo/react-hooks';
+import { UPDATE_MOVIES } from "../../utils/actions";
 
 // import Movies from "../Movies";
 
@@ -89,19 +91,38 @@ const MovieList = ({ category }) => {
 
   ]);
 
-  const currentCategory = movies.filter((movie) => movie.category === category);
+  const currentCategory = movies.filter((movies) => movies.category === category);
 
   const dispatch = useDispatch();
   const state = useSelector(state => state);
+  const { loading, data } = useQuery(QUERY_MOVIES);
 
   const {
-    image,
-    name,
     _id,
-
   } = movies;
 
   const { watchList } = state
+
+  useEffect(() => {
+    if (data) {
+      dispatch({
+        type: UPDATE_MOVIES,
+        movies: data.movies
+      });
+      data.movies.forEach((movie) => {
+        idbPromise('movies', 'put', movie);
+      });
+    } else if (!loading) {
+      idbPromise('movies', 'get').then((movies) => {
+        dispatch({
+          type: UPDATE_MOVIES,
+          movies: movies
+        });
+      });
+    }
+  }, [data, loading, dispatch]);
+
+
 
   const addToWatchList = (movie) => {
     const movieOnList = MovieList.find((movieListItem) => movieListItem._id === _id)
@@ -111,9 +132,9 @@ const MovieList = ({ category }) => {
       // not on list put it on the list
       dispatch({
         type: ADD_TO_WATCHLIST,
-        product: { ...movie, addedQuantity: 1 }
+        movie: { ...movie, addedQuantity: 1 }
       });
-      idbPromise('watchlist', 'put', { ...movie, addedQuantity: 1 });
+      idbPromise('watchList', 'put', { ...movie, addedQuantity: 1 });
     }
   }
   // const { currentCategory } = movies;
@@ -127,18 +148,23 @@ const MovieList = ({ category }) => {
   } else {
     return (
       <div>
-        <div className="flex-row">
+        <div className="flex-row space-between" >
           {currentCategory.map((movie, i) => (
-            <img
-              src={require(`../../assets/${category}/${i}.jpg`).default}
-              alt={movie.name}
-              className="img-thumbnail mx-1"
-              key={movie.name}
-            />
-          ))}
-          <button onClick={addToWatchList}>Add to Watch List</button>
+            <div>
+              <img
+                src={require(`../../assets/${category}/${i}.jpg`)}
+                alt={movie.name}
+                className="img-thumbnail mx-1"
+                key={movie.name}
+              />
+              <div>
+                <button onClick={addToWatchList}><span role="img" aria-label="heart">➕ Watch List</span></button>
 
-          <button><span role="img" aria-label="heart">💚</span></button>
+                <button><span role="img" aria-label="heart">💚</span></button>
+              </div>
+            </div>
+          ))}
+
         </div>
 
       </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-// import MovieList from '../MovieList';
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_TO_WATCHLIST } from '../../utils/actions';
 import { idbPromise } from "../../utils/helpers";
@@ -11,7 +10,7 @@ function Movies(movieItem) {
   const state = useSelector(state => state);
   const {
     image,
-    movieTitle,
+    name,
     _id,
   } = movieItem;
   console.log(image)
@@ -35,33 +34,15 @@ function Movies(movieItem) {
     <div className="card px-1 py-1">
       <Link to={`/movies/${_id}`}>
         <img
-          alt={movieTitle}
+          alt={name}
           src={`./public/images/${image}`}
         />
-        <p>{movieTitle}</p>{ }
+        <p>{name}</p>{ }
       </Link>
       <div>
       </div>
       <button onClick={addToWatchList}><span role="img" aria-label="heart">➕ Watch List</span></button>
     </div>
-    // <div className="flex-row space-between" >
-    //   {currentCategory.map((movie, i) => (
-    //     <div key={movie.name}>
-    //       <img
-    //         src={require(`../../assets/${category}/${i}.jpg`)}
-    //         alt={movie.name}
-    //         className="img-thumbnail mx-1"
-
-    //       />
-    //       <div>
-    //         <button onClick={addToWatchList}><span role="img" aria-label="heart">➕ Watch List</span></button>
-
-    //         <button><span role="img" aria-label="heart">💚</span></button>
-    //       </div>
-    //     </div>
-    //   ))}
-
-    // </div>
   );
 }
 export default Movies;

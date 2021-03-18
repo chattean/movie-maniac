@@ -25,14 +25,14 @@ function WatchList() {
                             <div key={movies._id} className="my-2">
 
                                 <div className="flex-row">
-                                    {order.watchList.map(({ _id, image, movieTitle, }, index) => (
+                                    {order.watchList.map(({ _id, image, name, }, index) => (
                                         <div key={index} className="card px-1 py-1">
                                             <Link to={`/movies/${_id}`}>
                                                 <img
-                                                    alt={movieTitle}
+                                                    alt={name}
                                                     src={`/images/${image}`}
                                                 />
-                                                <p>{movieTitle}</p>
+                                                <p>{name}</p>
                                             </Link>
                                         </div>
                                     ))}

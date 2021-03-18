@@ -4,7 +4,7 @@ export const QUERY_MOVIES = gql`
   query getMovies($category: ID) {
     movies(category: $category) {
       _id
-      movieTitle
+      name
       description
       image
       category {
@@ -12,4 +12,13 @@ export const QUERY_MOVIES = gql`
       }
     }
   }
+`;
+
+export const QUERY_CATEGORIES = gql`
+{
+  categories {
+    _id
+    name
+  }
+}
 `;

@@ -30,10 +30,13 @@ function MovieList() {
         dispatch({
           type: UPDATE_MOVIES,
           movies: movies
+          
         });
       });
     }
+    
   }, [data, loading, dispatch]);
+ 
 
   function filterMovies() {
     if (!currentCategory) {
@@ -52,7 +55,7 @@ function MovieList() {
                 key= {movie._id}
                 _id={movie._id}
                 image={movie.image}
-                name={movie.movieTitle}
+                name={movie.name}
                 
               />
           ))}

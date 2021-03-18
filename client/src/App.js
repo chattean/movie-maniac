@@ -24,32 +24,18 @@ const client = new ApolloClient({
 })
 
 
+
 function App() {
-  const [categories] = useState([
-    {
-      name: 'Movies',
-      description: 'A chance for us to escape reality, learn, grow, or just to simply have fun!',
-      images: 'There should be pictures here',
-    },
-    { name: 'Horror', description: 'Movies that will keep you up at night', images: 'There should be pictures here', },
-    { name: 'Comedy', description: 'Movies that hit the funny bone', images: 'There should be pictures here', },
-    { name: 'Drama', description: 'Movies for the Drama lover in you', images: 'There should be pictures here', },
-  ]);
-
-  const [currentCategory, setCurrentCategory] = useState(categories[0]);
-
-  const [contactSelected, setContactSelected] = useState(false);
-
   return (
     <ApolloProvider client={client}>
       <div>
         <Provider store={store}>
           <Nav
-            categories={categories}
-            setCurrentCategory={setCurrentCategory}
-            currentCategory={currentCategory}
-            contactSelected={contactSelected}
-            setContactSelected={setContactSelected}
+          // categories={categories}
+          // setCurrentCategory={setCurrentCategory}
+          // currentCategory={currentCategory}
+          // contactSelected={contactSelected}
+          // setContactSelected={setContactSelected}
           />
 
           <Switch>
@@ -58,7 +44,7 @@ function App() {
             <Route exact path="/" component={Home} />
           </Switch>
 
-          <main>
+          {/* <main>
             {!contactSelected ? (
               <>
                 <Movies currentCategory={currentCategory}></Movies>
@@ -66,7 +52,7 @@ function App() {
             ) : (
               <MovieList></MovieList>
             )}
-          </main>
+          </main> */}
 
         </Provider>
       </div>

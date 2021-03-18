@@ -1,12 +1,14 @@
 // import dependencies
-const { Schema, model } = require('mongoose')
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 const dateFormat = require('../utils/dateFormat')
 const commentSchema = require('./Comment');
-const movieCategories = ['horror', 'drama', 'comedy']
+// const movieCategories = ['horror', 'drama', 'comedy']
 
 
 const movieSchema = new Schema({
-    movieTitle: {
+    name: {
         type: String,
         //Validation for 1 to 280 chars
         minlength: 1,
@@ -18,9 +20,8 @@ const movieSchema = new Schema({
         type: String,
     },
     category: {
-        type: String,
-        enum: movieCategories,
-        lowercase: true,
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
         required: true
     },
     // Use moment in the getter method to format the timestamp on query
@@ -48,7 +49,7 @@ const movieSchema = new Schema({
         id: false
     });
 // Getting movie categories
-movieSchema.static('getCategories', () => Array.from(movieCategories))
+// movieSchema.static('getCategories', () => Array.from(movieCategories))
 
 // Comments left by the user
 movieSchema.virtual('commentCount').get(function () {
@@ -56,7 +57,7 @@ movieSchema.virtual('commentCount').get(function () {
 });
 
 // create the movie model using the UserSchema
-const Movie = model('Movie', movieSchema);
+const Movie = mongoose.model('Movie', movieSchema);
 
 // export the movie model
 module.exports = Movie;

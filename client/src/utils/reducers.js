@@ -1,4 +1,10 @@
-import { ADD_TO_WATCHLIST, REMOVE_FROM_WATCHLIST, UPDATE_MOVIES } from "./actions"
+import {
+    ADD_TO_WATCHLIST,
+    REMOVE_FROM_WATCHLIST,
+    UPDATE_MOVIES,
+    UPDATE_CATEGORIES,
+    UPDATE_CURRENT_CATEGORY,
+} from "./actions"
 
 const initialState = {
     movies: [],
@@ -27,6 +33,17 @@ export const reducers = (state = initialState, action) => {
             return {
                 ...state,
                 watchList: newState
+            };
+        case UPDATE_CATEGORIES:
+            return {
+                ...state,
+                categories: [...action.categories],
+            };
+
+        case UPDATE_CURRENT_CATEGORY:
+            return {
+                ...state,
+                currentCategory: action.currentCategory
             }
 
         default:

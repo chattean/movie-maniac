@@ -16,82 +16,97 @@ db.once('open', async () => {
 
     const Movies = await Movie.insertMany([
         {
-            movieTitle: 'TheExorcist',
+            movieTitle: 'The Exorcist',
             category: 'horror',
+            image: 'The-Exorcist.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
-            movieTitle: 'The-Conjuring',
+            movieTitle: 'The Conjuring',
             category: 'horror',
+            image: 'The-Conjuring.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
-            movieTitle: 'The-Shining',
+            movieTitle: 'The Shining',
             category: 'horror',
+            image: 'The-Shining.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
-            movieTitle: 'Texas-Chainsaw-Massacre',
+            movieTitle: 'Texas Chainsaw Massacre',
             category: 'horror',
+            image: 'Texas-Chainsaw.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
             movieTitle: 'Sinister',
             category: 'horror',
+            image: 'Sinister.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
             movieTitle: 'Bridesmaids',
             category: 'comedy',
+            image: 'Bride-Maids.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
             movieTitle: 'Friday',
             category: 'comedy',
+            image: 'Friday.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
             movieTitle: 'Ghost-Busters',
             category: 'comedy',
+            image: 'Ghost-Busters.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
             movieTitle: 'The-Mask',
             category: 'comedy',
+            image: 'The-Mask.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
             movieTitle: 'The-Godfather',
             category: 'drama',
+            image: 'The-Godfather.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
-            movieTitle: 'Shawshank-Redemption',
+            movieTitle: 'Shawshank Redemption',
             category: 'drama',
+            image: 'Shawshank-Redemption.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
-            movieTitle: 'Forest-Gump',
+            movieTitle: 'Forrest Gump',
             category: 'drama',
+            image: 'Forrest-Gump.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
-            movieTitle: 'The-Green-Mile',
+            movieTitle: 'The Green Mile',
             category: 'drama',
+            image: 'Green-Mile.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
             movieTitle: 'White-Chicks',
             category: 'comedy',
+            image: 'White-Chicks.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
         {
             movieTitle: 'Knives-Out',
             category: 'drama',
+            image: 'Knives-Out.jpg',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie',
         },
     ]);
-    console.log('products seeded');
+    console.log('movies seeded');
     await User.deleteMany();
     await User.create({
         firstName: 'Betty',

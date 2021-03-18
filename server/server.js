@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { ApolloServer } = require("apollo-server-express");
 const { typeDefs, resolvers } = require("./schemas");
+const path = require('path');
 const { createAuthContext } = require("./utils/auth")
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -19,15 +20,9 @@ app.use(express.static('public'));
 app.use(server.getMiddleware({ path: "/graphql" }))
 app.use(require('./routes/api'));
 const db = require('./config/connections');
+app.use('/images', express.static(path.join(__dirname, '/client/assets')));
 
-// set up Mongoose to connect when we start the app
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/movie-maniac', {
-//     useFindAndModify: false,
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// });
 
-// Use this to log mongo queries being executed!
 mongoose.set('debug', true);
 
 db.once('open', () => {

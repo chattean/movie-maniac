@@ -14,6 +14,9 @@ const movieSchema = new Schema({
         //required
         required: 'Please have a proper movie title'
     },
+    image: {
+        type: String,
+    },
     category: {
         type: String,
         enum: movieCategories,
@@ -27,6 +30,7 @@ const movieSchema = new Schema({
         default: Date.now,
         $gte: dateFormat()
     },
+
     description: {
         type: String
     },

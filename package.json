@@ -11,7 +11,7 @@
     "dev": "npx concurrently \"npm:watch:server\" \"npm:start:client\"",
     "start:server": "cd ./server && npm start",
     "start:client": "cd ./client && npm start",
-    "watch:server": "cd ./server && npm watch",
+    "watch:server": "cd ./server && npm run watch",
     "install:server": "cd ./server && npm i",
     "install:client": "cd ./client && npm i",
     "postinstall": "npx concurrently \"npm:install:server\" \"npm:install:client\""
@@ -26,5 +26,6 @@
   "bugs": {
     "url": "https://github.com/chattean/movie-maniac/issues"
   },
-  "homepage": "https://github.com/chattean/movie-maniac#readme"
+  "homepage": "https://github.com/chattean/movie-maniac#readme",
+  "dependencies": {}
 }

@@ -1,5 +1,7 @@
 // import dependencies
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 const bcrypt = require('bcrypt')
 
 
@@ -84,6 +86,6 @@ userSchema.methods.isCorrectPassword = function (candidatePassword, cb) {
 };
 
 // create the User model using the UserSchema
-const User = model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 // export the User model
 module.exports = User;

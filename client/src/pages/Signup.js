@@ -11,14 +11,9 @@ function Signup(props) {
     const handleFormSubmit = async event => {
         event.preventDefault();
         try {
+            console.log(formState);
             const mutationResponse = await addUser({
-                variables: {
-                    email: formState.email,
-                    password: formState.password,
-                    firstName: formState.firstName,
-                    lastName: formState.lastName,
-                    userName: formState.userName
-                }
+                variables: formState
             });
 
             const token = mutationResponse.data.addUser.token;
@@ -48,7 +43,6 @@ function Signup(props) {
                     <input
                         placeholder="First Name"
                         name="firstName"
-                        type="firstName"
                         id="firstName"
                         onChange={handleChange}
                     />
@@ -58,7 +52,6 @@ function Signup(props) {
                     <input
                         placeholder="Last Name"
                         name="lastName"
-                        type="lastName"
                         id="lastName"
                         onChange={handleChange}
                     />
@@ -67,19 +60,16 @@ function Signup(props) {
                     <label htmlFor="firstName">User Name:</label>
                     <input
                         placeholder="Pick a fun user name"
-                        name="userName"
-                        type="userName"
-                        id="userName"
+                        name="username"
                         onChange={handleChange}
                     />
                 </div>
                 <div className="flex-row space-between my-2">
                     <label htmlFor="email">Email:</label>
                     <input
-                        placeholder="youremail@emial.com"
+                        placeholder="youremail@email.com"
                         name="email"
                         type="email"
-                        id="email"
                         onChange={handleChange}
                     />
                 </div>
@@ -89,7 +79,6 @@ function Signup(props) {
                         placeholder="*****"
                         name="password"
                         type="password"
-                        id="password"
                         onChange={handleChange}
                     />
                 </div>

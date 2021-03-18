@@ -11,13 +11,13 @@ export const reducers = (state = initialState, action) => {
         case UPDATE_MOVIES:
             return {
                 ...state,
-                movies: [...action.movie],
+                movies: [...action.movies],
             };
         case ADD_TO_WATCHLIST:
             return {
                 ...state,
 
-                watchList: [...state.watchList, action.movie],
+                watchList: [...state.watchList, action.movies],
             };
         case REMOVE_FROM_WATCHLIST:
             let newState = state.watchList.filter(movie => {

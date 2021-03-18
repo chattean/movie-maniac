@@ -61,7 +61,6 @@ function App() {
             {!contactSelected ? (
               <>
                 <Movies currentCategory={currentCategory}></Movies>
-                {/* <About></About> */}
               </>
             ) : (
               <MovieList></MovieList>

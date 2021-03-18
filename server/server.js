@@ -20,7 +20,7 @@ app.use(express.static('public'));
 app.use(server.getMiddleware({ path: "/graphql" }))
 app.use(require('./routes/api'));
 const db = require('./config/connections');
-app.use('/images', express.static(path.join(__dirname, '/client/assets')));
+app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
 
 mongoose.set('debug', true);

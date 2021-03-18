@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_USER } from "../utils/queries";
 
@@ -26,14 +25,14 @@ function WatchList() {
                             <div key={movies._id} className="my-2">
 
                                 <div className="flex-row">
-                                    {order.watchList.map(({ _id, image, name, }, index) => (
+                                    {order.watchList.map(({ _id, image, movieTitle, }, index) => (
                                         <div key={index} className="card px-1 py-1">
                                             <Link to={`/movies/${_id}`}>
                                                 <img
-                                                    alt={name}
+                                                    alt={movieTitle}
                                                     src={`/images/${image}`}
                                                 />
-                                                <p>{name}</p>
+                                                <p>{movieTitle}</p>
                                             </Link>
                                         </div>
                                     ))}

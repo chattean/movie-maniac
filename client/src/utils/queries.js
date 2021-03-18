@@ -2,9 +2,9 @@ import gql from 'graphql-tag';
 
 export const QUERY_MOVIES = gql`
   query getMovies($category: ID) {
-    products(category: $category) {
+    movies(category: $category) {
       _id
-      name
+      movieTitle
       description
       image
       category {

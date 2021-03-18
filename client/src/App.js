@@ -28,11 +28,12 @@ function App() {
   const [categories] = useState([
     {
       name: 'Movies',
-      description: 'Horror Movies',
+      description: 'A chance for us to escape reality, learn, grow, or just to simply have fun!',
+      images: 'There should be pictures here',
     },
-    { name: 'horror', description: 'Movies that will keep you up at night' },
-    { name: 'comedy', description: 'Movies that hit the funny bone' },
-    { name: 'drama', description: 'Movies for the Drama lover in you' },
+    { name: 'Horror', description: 'Movies that will keep you up at night', images: 'There should be pictures here', },
+    { name: 'Comedy', description: 'Movies that hit the funny bone', images: 'There should be pictures here', },
+    { name: 'Drama', description: 'Movies for the Drama lover in you', images: 'There should be pictures here', },
   ]);
 
   const [currentCategory, setCurrentCategory] = useState(categories[0]);

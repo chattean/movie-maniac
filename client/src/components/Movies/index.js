@@ -6,7 +6,7 @@ import { ADD_TO_WATCHLIST } from '../../utils/actions';
 import { idbPromise } from "../../utils/helpers";
 
 function Movies(movieItem) {
-
+  console.log(movieItem);
   const dispatch = useDispatch();
   const state = useSelector(state => state);
   const {
@@ -14,6 +14,7 @@ function Movies(movieItem) {
     movieTitle,
     _id,
   } = movieItem;
+  console.log(image)
   const { watchList } = state
   const addToWatchList = () => {
     const movieOnList = watchList.find((movieListItem) => movieListItem._id === _id)

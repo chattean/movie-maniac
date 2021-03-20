@@ -14,7 +14,8 @@
     "watch:server": "cd ./server && npm run watch",
     "install:server": "cd ./server && npm i",
     "install:client": "cd ./client && npm i",
-    "postinstall": "npx concurrently \"npm:install:server\" \"npm:install:client\""
+    "postinstall": "npx concurrently \"npm:install:server\" \"npm:install:client\"",
+    "heroku-postbuild": "cd ./client && npm run build"
   },
   "repository": {
     "type": "git",

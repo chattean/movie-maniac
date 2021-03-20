@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from '@apollo/react-hooks';
-// import { useStoreContext } from "../utils/GlobalState";
 import { useDispatch, useSelector } from "react-redux";
 import {
     REMOVE_FROM_WATCHLIST,
@@ -10,10 +9,9 @@ import {
 } from "../utils/actions";
 import { QUERY_MOVIES } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
-
+import WatchList from "./WatchList";
 
 function Detail() {
-    // const [state, dispatch] = useStoreContext();
     const dispatch = useDispatch();
     const state = useSelector(state => state);
 
@@ -53,24 +51,16 @@ function Detail() {
     }, [movies, data, loading, dispatch, id]);
 
     const addToWatchList = () => {
-        const movieOnList = watchList.find((watchListItem) => watchListItem._id === id)
+        const movieOnWatchList = state.watchList.find((watchListItem) => watchListItem._id === id)
         // how can i rewrite this? i need to alert the user if the movie is already on the watch list
-        if (movieOnList) {
-            dispatch({
-                type: UPDATE_WATCHLIST,
-                _id: id,
-                addedQuantity: parseInt(movieOnList.addedQuantity) + 1
-            });
-            idbPromise('watchList', 'put', {
-                ...movieOnList,
-                addedQuantity: parseInt(movieOnList.addedQuantity) + 1
-            });
+        if (movieOnWatchList) {
+            console.log("This movie is already a must watch for you")
         } else {
             dispatch({
                 type: ADD_TO_WATCHLIST,
-                movie: { ...currentMovie, addedQuantity: 1 }
+                movie: { ...currentMovie }
             });
-            idbPromise('watchList', 'put', { ...currentMovie, addedQuantity: 1 });
+            idbPromise('watchList', 'put', { ...currentMovie });
 
         }
     }
@@ -101,13 +91,13 @@ function Detail() {
                     <p>
 
                         <button onClick={addToWatchList}>Add to Watch List</button>
-                        <button
-                            disabled={!watchList.find(p => p._id === currentMovie._id)}
+                        {/* <button
+                            disabled={!WatchList.find(movie => movie._id === currentMovie._id)}
                             onClick={removeFromWatchList}
                         >
                             Remove from Watch List
-            </button>
-                        <button><span role="img" aria-label="heart">💚</span></button>
+            </button> */}
+
                     </p>
 
                     <img
@@ -115,10 +105,9 @@ function Detail() {
                         alt={currentMovie.name}
                     />
                 </div>
-            ) : null}
-            {
-                loading ? <img src={spinner} alt="loading" /> : null
+            ) : null
             }
+
             <ul>
                 <li>
                     see comments here

@@ -23,7 +23,7 @@ const resolvers = {
             return await Movie.find(params).populate('category');
         },
         movie: async (parent, { _id }) => {
-            return await Product.findById(_id).populate('category');
+            return await Movie.findById(_id).populate('category');
         },
         user: async (parent, args, context) => {
             if (context.user) {
@@ -60,7 +60,7 @@ const resolvers = {
         addComment: async (parent, { movies }, context) => {
             console.log(context);
             if (context.user) {
-                const order = new Comment({ movies });
+                const comment = new Comment({ movies });
 
                 await User.findByIdAndUpdate(context.user._id, { $push: { movies: movie } });
 

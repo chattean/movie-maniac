@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Home from "./pages/Home"
 import { Switch, Route } from 'react-router-dom';
 import MovieList from './components/MovieList';
+import Detail from "./pages/Detail"
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -42,6 +43,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/" component={Home} />
+            <Route exact path="/movies/:id" component={Detail} />
           </Switch>
 
           {/* <main>

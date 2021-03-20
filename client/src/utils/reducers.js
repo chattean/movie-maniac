@@ -4,6 +4,7 @@ import {
     UPDATE_MOVIES,
     UPDATE_CATEGORIES,
     UPDATE_CURRENT_CATEGORY,
+    UPDATE_WATCHLIST
 } from "./actions"
 
 const initialState = {
@@ -23,7 +24,15 @@ export const reducers = (state = initialState, action) => {
             return {
                 ...state,
 
-                watchList: [...state.watchList, action.movies],
+                watchList: [...state.watchList, action.movie],
+            };
+        case UPDATE_WATCHLIST:
+            return {
+                ...state,
+                watchList: state.watchList.map(movie => {
+
+                    return movie
+                })
             };
         case REMOVE_FROM_WATCHLIST:
             let newState = state.watchList.filter(movie => {

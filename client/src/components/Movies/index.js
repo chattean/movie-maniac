@@ -16,17 +16,17 @@ function Movies(movieItem) {
   console.log(image)
   const { watchList } = state
   const addToWatchList = () => {
-    const movieOnList = watchList.find((movieListItem) => movieListItem._id === _id)
-    if (movieOnList) {
+    const movieOnWatchList = state.watchList.find((movieListItem) => movieListItem._id === _id)
+    if (movieOnWatchList) {
       console.log("already there")
       // tell user the movie is already on the list
     } else {
       // not on list put it on the list
       dispatch({
         type: ADD_TO_WATCHLIST,
-        movie: { ...movieItem, addedQuantity: 1 }
+        movie: { ...movieItem }
       });
-      idbPromise('watchList', 'put', { ...movieItem, addedQuantity: 1 });
+      idbPromise('watchList', 'put', { ...movieItem });
     }
   }
 
@@ -35,7 +35,7 @@ function Movies(movieItem) {
       <Link to={`/movies/${_id}`}>
         <img
           alt={name}
-          src={`./public/images/${image}`}
+          src={`/images/${image}`}
         />
         <p>{name}</p>{ }
       </Link>

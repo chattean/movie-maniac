@@ -25,7 +25,7 @@ function WatchList() {
                             <div key={movies._id} className="my-2">
 
                                 <div className="flex-row">
-                                    {order.watchList.map(({ _id, image, name, }, index) => (
+                                    {user.watchList.map(({ _id, image, name, }, index) => (
                                         <div key={index} className="card px-1 py-1">
                                             <Link to={`/movies/${_id}`}>
                                                 <img
@@ -40,7 +40,8 @@ function WatchList() {
                             </div>
                         ))}
                     </>
-                ) : null}
+                ) : (<h3>You haven't added any movies yet!</h3>)
+                }
 
             </div>
 

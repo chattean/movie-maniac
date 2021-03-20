@@ -44,14 +44,14 @@ function CategoryMenu() {
     return (
         <div>
             <h2>Choose a Category:</h2>
-            {categories.map(item => (
+            {categories.map(movie => (
                 <button
-                    key={item._id}
+                    key={movie._id}
                     onClick={() => {
-                        handleClick(item._id);
+                        handleClick(movie._id);
                     }}
                 >
-                    {item.name}
+                    {movie.name}
                 </button>
             ))}
         </div>

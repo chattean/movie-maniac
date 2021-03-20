@@ -22,3 +22,22 @@ export const QUERY_CATEGORIES = gql`
   }
 }
 `;
+
+export const QUERY_USER = gql`
+{
+  user {
+    firstName
+    lastName
+    watchList {
+      _id
+      
+      movies {
+        _id
+        name
+        description
+        image
+      }
+    }
+  }
+}
+`;

@@ -287,9 +287,10 @@ textarea {
   border: 2px solid black;
   opacity: 0.9;
 }
-.movie-card{
-  /* background-color: transparent; */
-}
+/* .movie-card{
+  background-color: transparent; 
+} 
+*/
 
 .img-thumbnail {
   width: auto;

@@ -37,11 +37,11 @@ const Signup = () => {
     }
     try {
       console.log(formState);
-      const { mutationResponse } = await addUser({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
-      const token = mutationResponse.addUser.token;
+      const token = data.addUser.token;
       Auth.login(token);
     } catch (err) {
       console.error(err);

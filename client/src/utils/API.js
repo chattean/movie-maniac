@@ -1,3 +1,4 @@
+require('dotenv').config()
 // route to get logged in user's info (needs the token)
 export const getUser = (token) => {
     return fetch('/api/users/user', {
@@ -49,14 +50,14 @@ export const getUser = (token) => {
       },
     });
   };
-  console.log(process.env.IMDB_KEY)
+ 
   // make a search to imdb movies api
   // https://www.googleapis.com/movies/v1/volumes?q=harry+potter
   export const searchIMDBMovies = (query) => {
       return fetch(`https://movie-database-imdb-alternative.p.rapidapi.com/?s=${query}&page=1&r=json`, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": process.env.IMDB_KEY,
+            "x-rapidapi-key": process.env.REACT_APP_IMDB_KEY,
             "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com"
         }
     })

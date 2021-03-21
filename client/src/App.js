@@ -11,6 +11,7 @@ import SearchMovies from "./pages/SearchMovies"
 import { Switch, Route } from 'react-router-dom';
 import MovieList from './components/MovieList';
 import Detail from "./pages/Detail"
+require('dotenv').config()
 
 const client = new ApolloClient({
   request: (operation) => {

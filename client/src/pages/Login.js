@@ -27,8 +27,8 @@ const Login = () =>{
       event.stopPropagation();
     }
     try {
-      const { mutationResponse } = await login({ variables: { ...formState } });
-      const token = mutationResponse.login.token;
+      const { data } = await login({ variables: { ...formState } });
+      const token = data.login.token;
       Auth.login(token);
     } catch (err) {
       console.log(err);

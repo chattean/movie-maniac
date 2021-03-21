@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
-import { useMutation } from '@apollo/react-hooks';
-import { SAVE_MOVIE } from '../utils/mutations';
+import React, { useState, useEffect } from "react";
+import {
+  Jumbotron,
+  Container,
+  Col,
+  Form,
+  Button,
+  Card,
+  CardColumns,
+} from "react-bootstrap";
+import { useMutation } from "@apollo/react-hooks";
+import { SAVE_MOVIE } from "../utils/mutations";
 import MovieList from "../components/MovieList";
 import CategoryMenu from "../components/CategoryMenu";
-import Auth from '../utils/auth';
-import {searchIMDBMovies} from '../utils/API'
-import { saveMovieIds, getSavedMovieIds } from '../utils/localStorage';
+import Auth from "../utils/auth";
+import { searchIMDBMovies } from "../utils/API";
+import { saveMovieIds, getSavedMovieIds } from "../utils/localStorage";
 const SearchMovies = () => {
-     // create state for holding returned google api data
+  // create state for holding returned google api data
   const [searchedMovies, setSearchedMovies] = useState([]);
   // create state for holding our search field data
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
 
   // create state to hold saved movieId values
   const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
@@ -32,23 +40,21 @@ const SearchMovies = () => {
     }
 
     try {
-      const response = await searchIMDBMovies(searchInput);
+      const response = await searchIMDBMovies(searchInput)
+        .then((data) => {
+          return data.json();
+        })
+        .then((res) => {
+            console.log(res)
+          const movieData = res.Search.map((movie) => ({
+            movieId: movie.imdbID,
+            title: movie.Title,
+            image: movie.Poster|| "",
+          }));
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { items } = await response.json();
-
-      const movieData = items.map((movie) => ({
-        movieId: movie.id,
-        title: movie.volumeInfo.title,
-        description: movie.volumeInfo.description,
-        image: movie.volumeInfo.imageLinks?.thumbnail || '',
-      }));
-
-      setSearchedMovies(movieData);
-      setSearchInput('');
+          setSearchedMovies(movieData);
+          setSearchInput("");
+        });
     } catch (err) {
       console.error(err);
     }
@@ -57,7 +63,9 @@ const SearchMovies = () => {
   // create function to handle saving a movie to our database
   const handleSaveMovie = async (movieId) => {
     // find the movie in `searchedMovies` state by the matching id
-    const movieToSave = searchedMovies.find((movie) => movie.movieId === movieId);
+    const movieToSave = searchedMovies.find(
+      (movie) => movie.movieId === movieId
+    );
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -68,7 +76,7 @@ const SearchMovies = () => {
 
     try {
       await saveMovie({
-        variables: {movie: movieToSave }
+        variables: { movie: movieToSave },
       });
       // const response = await saveMovie(movieToSave, token);
 
@@ -85,23 +93,23 @@ const SearchMovies = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-dark'>
+      <Jumbotron fluid className="text-light bg-dark">
         <Container>
           <h1>Search for Movies!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
                 <Form.Control
-                  name='searchInput'
+                  name="searchInput"
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
-                  type='text'
-                  size='lg'
-                  placeholder='Search for a movie'
+                  type="text"
+                  size="lg"
+                  placeholder="Search for a movie"
                 />
               </Col>
               <Col xs={12} md={4}>
-                <Button type='submit' variant='success' size='lg'>
+                <Button type="submit" variant="success" size="lg">
                   Submit Search
                 </Button>
               </Col>
@@ -114,26 +122,35 @@ const SearchMovies = () => {
         <h2>
           {searchedMovies.length
             ? `Viewing ${searchedMovies.length} results:`
-            : 'Search for a movie to begin'}
+            : "Search for a movie to begin"}
         </h2>
         <CardColumns>
           {searchedMovies.map((movie) => {
             return (
-              <Card key={movie.movieId} border='dark'>
+              <Card key={movie.movieId} border="dark">
                 {movie.image ? (
-                  <Card.Img src={movie.image} alt={`The cover for ${movie.title}`} variant='top' />
+                  <Card.Img
+                    src={movie.image}
+                    alt={`The cover for ${movie.title}`}
+                    variant="top"
+                  />
                 ) : null}
                 <Card.Body>
                   <Card.Title>{movie.title}</Card.Title>
-                  <Card.Text>{movie.description}</Card.Text>
+                  {/* <Card.Text>{movie.description}</Card.Text> */}
                   {Auth.loggedIn() && (
                     <Button
-                      disabled={savedMovieIds?.some((savedMovieId) => savedMovieId === movie.movieId)}
-                      className='btn-block btn-info'
-                      onClick={() => handleSaveMovie(movie.movieId)}>
-                      {savedMovieIds?.some((savedMovieId) => savedMovieId === movie.movieId)
-                        ? 'This movie has already been saved!'
-                        : 'Save this Movie!'}
+                      disabled={savedMovieIds?.some(
+                        (savedMovieId) => savedMovieId === movie.movieId
+                      )}
+                      className="btn-block btn-info"
+                      onClick={() => handleSaveMovie(movie.movieId)}
+                    >
+                      {savedMovieIds?.some(
+                        (savedMovieId) => savedMovieId === movie.movieId
+                      )
+                        ? "This movie has already been saved!"
+                        : "Save this Movie!"}
                     </Button>
                   )}
                 </Card.Body>
@@ -146,13 +163,13 @@ const SearchMovies = () => {
   );
 };
 
-    // return (
-    //     <div className="container">
+// return (
+//     <div className="container">
 
-    //         <CategoryMenu />
-    //         <MovieList />
+//         <CategoryMenu />
+//         <MovieList />
 
-    //     </div>
-    // );
+//     </div>
+// );
 
 export default SearchMovies;

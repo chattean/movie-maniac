@@ -51,7 +51,8 @@ body {
   color: black;
   text-shadow: rgb(89, 116, 138) 5px 3px 8px;
     font-family: 'Poiret One', cursive;
-
+    background-image: url("./assets/cover/cover-image7.jpg"); 
+    ;  
 }
 
 h1,
@@ -93,6 +94,7 @@ h6 {
 p {
   font-size: 1.1rem;
   margin-top: 0;
+  color: #a9f2fa;
 }
 
 a {
@@ -107,15 +109,15 @@ a:hover {
 }
 header {
   padding: 20px 35px;
-  background-color: #7b9699;
+  background-color: #a9f2fa;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   position: sticky;
   top: 0;
-  height: 250px;
+  height: 75px;
   position: -webkit-sticky;
-  background-image: url("./assets/cover/cover-image.jpg");
+  /* background-image: url("./assets/cover/cover-image.jpg"); */
       
   background-size: cover;
   background-position: center 80%;
@@ -126,7 +128,7 @@ header {
 
 
 header a {
-  color: black;
+  color: white;
   text-shadow: rgb(89, 116, 138) 5px 3px 8px;}
 
 button {
@@ -138,7 +140,7 @@ button {
   outline: none;
   cursor: pointer;
   margin: 0 1px;
-  background-color: lightblue;
+  background-color: #a9f2fa;;
 }
 
 button:hover {
@@ -272,6 +274,14 @@ textarea {
 .card {
   width: 25%;
   text-align: center;
+  background-color: #ffffff;
+  margin: 10px;
+  border-radius: 15px;
+  border: 2px solid black;
+  opacity: 0.6;
+}
+.movie-card{
+  background-color: transparent;
 }
 
 .img-thumbnail {

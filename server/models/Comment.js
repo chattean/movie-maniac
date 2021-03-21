@@ -15,7 +15,7 @@ const commentSchema = new Schema(
     commentBody: {
       type: String,
       required: true,
-      maxlength: 280
+      maxlength: 500
     },
     userName: {
       type: String,
@@ -34,4 +34,6 @@ const commentSchema = new Schema(
     id: false
   }
 );
-module.exports = commentSchema;
+
+const Comment = mongoose.model('Comment', commentSchema);
+module.exports = Comment;

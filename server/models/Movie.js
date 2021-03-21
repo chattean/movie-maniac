@@ -39,11 +39,15 @@ const movieSchema = new Schema({
     comments:
         // array of nested documents created with the reactionSchema
         [
-            commentSchema
+            {
+                type: Schema.Types.ObjectId,
+                commentSchema
+            }
         ]
 },
     {
         toJSON: {
+            virtuals: true,
             getters: true
         },
         id: false

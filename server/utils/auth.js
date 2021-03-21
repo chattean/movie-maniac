@@ -3,7 +3,7 @@ const SECRET = process.env.AUTH_SECRET;
 
 module.exports = {
     createAuthContext({ req }) {
-        const token = req.headers.authorization?.split(" ")[1]
+        const token = req.headers.userization?.split(" ")[1]
         if (!token) return {}
         try {
             const user = jwt.verify(token, SECRET)

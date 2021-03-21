@@ -32,13 +32,15 @@ function Movies(movieItem) {
 
   return (
     <div className="card px-1 py-1">
-      <Link to={`/movies/${_id}`}>
-        <img
-          alt={name}
-          src={`/images/${image}`}
-        />
-        <p>{name}</p>{ }
-      </Link>
+      <div className='movie-card'>
+        <Link to={`/movies/${_id}`}>
+          <img
+            alt={name}
+            src={`/images/${image}`}
+          />
+          <p>{name}</p>{ }
+        </Link>
+      </div>
       <div>
       </div>
       <button onClick={addToWatchList}><span role="img" aria-label="heart">➕ Watch List</span></button>

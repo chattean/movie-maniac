@@ -9,7 +9,7 @@
     "seed": "node seeders/seeds.js"
   },
   "keywords": [],
-  "author": "",
+  "user": "",
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "^2.11.0",

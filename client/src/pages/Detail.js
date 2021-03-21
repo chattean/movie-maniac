@@ -9,7 +9,7 @@ import {
 } from "../utils/actions";
 import { QUERY_MOVIES } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
-import WatchList from "./WatchList";
+import CommentBox from "../components/CommentBox";
 
 function Detail() {
     const dispatch = useDispatch();
@@ -110,7 +110,7 @@ function Detail() {
 
             <ul>
                 <li>
-                    see comments here
+                    <CommentBox />
                 </li>
             </ul>
         </>

@@ -21,3 +21,41 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const SAVE_MOVIE = gql`
+  mutation saveMovie($movie: BookInput!) {
+    saveMovie(movie: $movie) {
+        _id
+        username
+        email
+        bookCount
+        savedBooks {
+            bookId
+            title
+            authors
+            description
+            image
+            link
+        }
+    }
+  }
+`;
+
+export const REMOVE_MOVIE = gql`
+  mutation removeBook($bookId: String!) {
+    removeBook(bookId: $bookId) {
+        _id
+        username
+        email
+        bookCount
+        savedBooks {
+            bookId
+            title
+            authors
+            description
+            image
+            link
+        }
+    }
+  }
+`;

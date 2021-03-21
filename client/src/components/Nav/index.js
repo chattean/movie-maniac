@@ -3,6 +3,9 @@ import { capitalizeFirstLetter } from '../../utils/helpers';
 import Auth from "../../utils/auth";
 import { Link } from 'react-router-dom';
 
+// import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
+import SignUp from '../../pages/Signup';
+import Login from '../../pages/Login';
 
 
 

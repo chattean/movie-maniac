@@ -1,16 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery,useMutation } from '@apollo/react-hooks';
 import { QUERY_USER } from "../utils/queries";
+import { REMOVE_MOVIE } from "../utils/mutations";
+import { removeMovieId } from '../utils/localStorage';
+import Auth from '../utils/auth';
 
-function WatchList() {
-    const { data } = useQuery(QUERY_USER);
-    let user;
+const WatchList = () => {
+    const { loading,data } = useQuery(QUERY_USER);
+    
+    const userData = data?.user || {};
 
-    if (data) {
-        user = data.user;
-    }
-
+    const [removeMovie] = useMutation(REMOVE_MOVIE)
+    
     return (
         <>
             <div className="container my-1">

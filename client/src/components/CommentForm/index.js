@@ -1,5 +1,5 @@
 import React from "react";
-import CommentBox from '../CommentBox'
+import Comment from '../Comment'
 
 function CommentForm() {
 
@@ -14,11 +14,11 @@ function CommentForm() {
     return (
         <form className="comment-form" onSubmit={handleSubmit.bind(this)}>
             <div className="comment-form-fields">
-                <input placeholder="Name" required ref={(input) => this._user = input}></input><br />
-                <textarea placeholder="Comment" rows="4" required ref={(textarea) => this._body = textarea}></textarea>
+                <input placeholder="Name" required ref={(input) => this.user = input}></input><br />
+                <textarea placeholder="Comment" rows="4" required ref={(textarea) => this.body = textarea}></textarea>
             </div>
             <div className="comment-form-actions">
-                <CommentBox></CommentBox>
+                <Comment></Comment>
                 <button type="submit">Post Comment</button>
             </div>
         </form>

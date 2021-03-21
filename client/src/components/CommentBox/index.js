@@ -7,13 +7,13 @@ function CommentBox() {
     const state = useSelector(state => state);
 
 
-    function addComment(user, body) {
-        const comment = {
+    function addComment(user, commentBody) {
+        const comments = {
             id: state.comments.length + 1,
             user,
-            body
+            commentBody
         };
-        this.setState({ comments: state.comments.concat([comment]) }); // *new array references help React stay fast, so concat works better than push here.
+        this.setState({ comments: state.comments.concat([comments]) }); // *new array references help React stay fast, so concat works better than push here.
     }
 
     function handleClick() {
@@ -23,12 +23,12 @@ function CommentBox() {
     }
 
     function getComments() {
-        return state.comments.map((comment) => {
+        return state.comments.map((comments) => {
             return (
                 <Comment
-                    user={comment.user}
-                    body={comment.body}
-                    key={comment.id} />
+                    user={comments.user}
+                    commentBody={comments.body}
+                    key={comments.id} />
             );
         });
     }
@@ -37,7 +37,7 @@ function CommentBox() {
         if (commentCount === 0) {
             return 'No comments yet';
         } else if (commentCount === 1) {
-            return "1 comment";
+            return "1 comments";
         } else {
             return `${commentCount} comments`;
         }
@@ -48,17 +48,17 @@ function CommentBox() {
 
     if (this.state.showComments) {
         buttonText = 'Hide Comments';
-        commentNodes = <div className="comment-list">{comments}</div>;
+        commentNodes = <div className="comments-list">{comments}</div>;
     }
     return (
-        <div className="comment-box">
+        <div className="comments-box">
             <h2>Join the Discussion!</h2>
             <CommentForm addComment={addComment.bind()} />
-            <button id="comment-reveal" onClick={handleClick.bind(this)}>
+            <button id="comments-reveal" onClick={handleClick.bind(this)}>
                 {buttonText}
             </button>
             <h3>Comments</h3>
-            <h4 className="comment-count">
+            <h4 className="comments-count">
                 {getCommentsTitle(comments.length)}
             </h4>
             {commentNodes}

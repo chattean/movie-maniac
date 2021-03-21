@@ -55,7 +55,7 @@ const userSchema = new Schema({
         }
     },],
 },
-    // Create a virtual called MovieCount that retrieves the length of the user's friends array field on query.
+    // Create a virtual called MovieCount that retrieves the length of the user's Movie array field on query.
     {
         toJSOn: {
             virtuals: true,

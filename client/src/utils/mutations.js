@@ -23,16 +23,15 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_MOVIE = gql`
-  mutation saveMovie($movie: BookInput!) {
+  mutation saveMovie($movie: MovieInput!) {
     saveMovie(movie: $movie) {
         _id
         username
         email
-        bookCount
-        savedBooks {
-            bookId
+        movieCount
+        savedMovies {
+            movieId
             title
-            authors
             description
             image
             link
@@ -42,16 +41,15 @@ export const SAVE_MOVIE = gql`
 `;
 
 export const REMOVE_MOVIE = gql`
-  mutation removeBook($bookId: String!) {
-    removeBook(bookId: $bookId) {
+  mutation removeMovie($movieId: String!) {
+    removeMovie(movieId: $movieId) {
         _id
         username
         email
-        bookCount
-        savedBooks {
-            bookId
+        movieCount
+        savedMovies {
+            movieId
             title
-            authors
             description
             image
             link

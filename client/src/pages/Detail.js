@@ -76,43 +76,45 @@ function Detail() {
 
     return (
         <>
-            {currentMovie ? (
-                <div className="container my-1">
-                    <Link to="/">
-                        ← Back to Movies
+            <div className="card px-1 py-1">
+                {currentMovie ? (
+                    <div className="container my-1">
+                        <Link to="/">
+                            ← Back to Movies
           </Link>
 
-                    <h2>{currentMovie.name}</h2>
+                        <h2>{currentMovie.name}</h2>
 
-                    <p>
-                        {currentMovie.description}
-                    </p>
+                        <p>
+                            {currentMovie.description}
+                        </p>
 
-                    <p>
+                        <p>
 
-                        <button onClick={addToWatchList}>Add to Watch List</button>
-                        {/* <button
+                            <button onClick={addToWatchList}>Add to Watch List</button>
+                            {/* <button
                             disabled={!WatchList.find(movie => movie._id === currentMovie._id)}
                             onClick={removeFromWatchList}
                         >
                             Remove from Watch List
             </button> */}
 
-                    </p>
+                        </p>
 
-                    <img
-                        src={`/images/${currentMovie.image}`}
-                        alt={currentMovie.name}
-                    />
-                </div>
-            ) : null
-            }
+                        <img
+                            src={`/images/${currentMovie.image}`}
+                            alt={currentMovie.name}
+                        />
+                    </div>
+                ) : null
+                }
 
-            <ul>
-                <li>
-                    <CommentBox />
-                </li>
-            </ul>
+                <ul>
+                    <li>
+                        {/* <CommentBox /> */}
+                    </li>
+                </ul>
+            </div>
         </>
     );
 };

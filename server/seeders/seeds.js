@@ -1,5 +1,6 @@
-const { User, Movie, Category } = require('../models');
-const db = require("../config/connections")
+const { User, Movie, Category, Comment } = require('../models');
+const db = require("../config/connections");
+const faker = require('faker');
 
 db.once('open', async () => {
     await Category.deleteMany();
@@ -106,20 +107,47 @@ db.once('open', async () => {
         },
     ]);
     console.log('movies seeded');
+
     await User.deleteMany();
-    await User.create({
-        firstName: 'Betty',
-        lastName: 'Johnson',
-        username: 'BettyJohnson',
-        email: 'Betty@betty.com',
-        password: 'Betty123.',
-        watchList: [
+
+    const userData = [];
+
+    for (let i = 0; i < 50; i += 1) {
+        const firstName = faker.name.firstName();
+        const lastName = faker.name.lastName();
+        const userName = faker.internet.userName();
+        const email = faker.internet.email();
+        const password = faker.internet.password();
+        const watchList = [
             {
-                movies: [movies[0]._id, movies[2]._id, movies[1]._id]
+                movies: [movies[i]]
             }
         ]
-    }),
-        console.log('users seeded');
+
+        userData.push({ firstName, lastName, userName, email, password, watchList });
+    }
+
+    const createdUsers = await User.collection.insertMany(userData);
+    console.log('users seeded');
+
+    // create comments
+    let createdComments = [];
+    for (let i = 0; i < 100; i += 1) {
+        const commentBody = faker.lorem.words(Math.round(Math.random() * 20) + 1);
+
+        const randomUserIndex = Math.floor(Math.random() * createdUsers.ops.length);
+        const { userName, _id: userId } = createdUsers.ops[randomUserIndex];
+
+        const createdComment = await Comment.create({ commentBody, userName: userName });
+
+        const updatedUser = await User.updateOne(
+            { _id: userId },
+            { $push: { comment: createdComment._id } }
+        );
+
+        createdComments.push(createdComment);
+    }
+    console.log('comments seeded');
 
     process.exit();
 });

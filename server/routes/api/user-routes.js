@@ -2,25 +2,26 @@ const router = require('express').Router();
 
 
 const {
-    getAllUser,
     getUserById,
     createUser,
-    updateUser,
-    deleteUser
+    saveMovie,
+    deleteMovie,
+    login
   } = require('../../controllers/user-controller');
   
 
+// import middleware
+const { authMiddleware } = require('../../utils/auth');
+
 // Set up GET all and POST at /api/users
-router
-  .route('/')
-  .get(getAllUser)
-  .post(createUser);
-// Set up GET one, PUT, and DELETE at /api/users/:id
-router
-  .route('/:userId')
-  .get(getUserById)
-  .put(updateUser)
-  .delete(deleteUser);
+router.route('/').post(createUser).put(authMiddleware, saveMovie);
+
+router.route('/login').post(login);
+
+router.route('/me').get(authMiddleware, getUserById);
+
+router.route('/movies/:imdbID').delete(authMiddleware, deleteMovie);
+
 
 
 module.exports = router;

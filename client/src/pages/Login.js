@@ -42,6 +42,7 @@ const Login = () =>{
   };
 
   return (
+    <>
     <div className="container my-1">
       <Link to="/signUp">Go SignUp</Link>
 
@@ -90,6 +91,7 @@ const Login = () =>{
         </div>
       </Form>
     </div>
+    </>
   );
 }
 

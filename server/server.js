@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { ApolloServer } = require("apollo-server-express");
 const { typeDefs, resolvers } = require("./schemas");
 const path = require('path');
-const { createAuthContext } = require("./utils/auth")
+const { authMiddleware } = require ('./utils/auth');
 const PORT = process.env.PORT || 3001;
 const app = express();
 const db = require('./config/connections');
@@ -13,8 +13,11 @@ const db = require('./config/connections');
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context: createAuthContext
-});
+    context: authMiddleware
+  });
+
+// integrate our Apollo server with the Express application as middleware
+server.applyMiddleware({ app });
 
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));

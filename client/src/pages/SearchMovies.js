@@ -10,8 +10,8 @@ import {
 } from "react-bootstrap";
 import { useMutation } from "@apollo/react-hooks";
 import { SAVE_MOVIE } from "../utils/mutations";
-import MovieList from "../components/MovieList";
-import CategoryMenu from "../components/CategoryMenu";
+// import MovieList from "../components/MovieList";
+// import CategoryMenu from "../components/CategoryMenu";
 import Auth from "../utils/auth";
 import { searchIMDBMovies } from "../utils/API";
 import { saveMovieIds, getSavedMovieIds } from "../utils/localStorage";

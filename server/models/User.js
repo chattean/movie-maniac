@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt')
-
+// import schema from Book.js
+const movieSchema = require('./Movie');
 
 const userSchema = new Schema({
     username: {
@@ -36,24 +37,21 @@ const userSchema = new Schema({
         match: [/.+@.+\..+/, 'Please enter a valid email address'],
     },
     //array of Objects of Object IDs
-    movies: [{
-        // reference the movie model
-        // _id:
-        type: Schema.Types.ObjectId,
-        ref: 'Movie',
-    },],
-    comments: [{
-        // reference the movie model
-        // _id:
-        movieId: {
-            type: Schema.Types.ObjectId,
-            ref: 'Movie'
-        },
-        commentId: {
-            type: Schema.Types.ObjectId,
-            ref: 'Movie.comments'
-        }
-    },],
+    movies: [
+        movieSchema
+        ],
+    // comments: [{
+    //     // reference the movie model
+    //     // _id:
+    //     movieId: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'Movie'
+    //     },
+    //     commentId: {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'Movie.comments'
+    //     }
+    // },],
 },
     // Create a virtual called MovieCount that retrieves the length of the user's Movie array field on query.
     {
@@ -84,6 +82,13 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = function (candidatePassword, cb) {
     return bcrypt.compare(candidatePassword, this.password)
 };
+
+
+// when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
+userSchema.virtual('bookCount').get(function () {
+    return this.savedMovies.length;
+  });
+  
 
 // create the User model using the UserSchema
 const User = mongoose.model('User', userSchema);

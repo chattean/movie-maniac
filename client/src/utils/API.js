@@ -1,7 +1,7 @@
 require('dotenv').config()
 // route to get logged in user's info (needs the token)
-export const getUser = (token) => {
-    return fetch('/api/users/user', {
+export const getMe = (token) => {
+    return fetch('/api/users/me', {
       headers: {
         'Content-Type': 'application/json',
         authorization: `Bearer ${token}`,

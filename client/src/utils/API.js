@@ -57,7 +57,7 @@ export const getMe = (token) => {
       return fetch(`https://movie-database-imdb-alternative.p.rapidapi.com/?s=${query}&page=1&r=json`, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": process.env.REACT_APP_IMDB_KEY,
+            "x-rapidapi-key": `${process.env.REACT_APP_IMDB_KEY}`,
             "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com"
         }
     })

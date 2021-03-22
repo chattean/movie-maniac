@@ -46,11 +46,10 @@ Link to the deployed project
 
 ## Contributing
 Natasha Mullin [link](github.com/natashamullin)
-Anuj Chattean  [link](github.com/chattean)
+Anuj Chatterjee [link](github.com/chattean)
 
 ## Questions 
 please reach me at my GubHub account or through Email if you have any questions
 Natasha Mullin; [link](github.com/natashamullin)
 [link](Natashamullin0826889@yahoo.com)
-
-
+[link](anujchatterjee@gmail.com)

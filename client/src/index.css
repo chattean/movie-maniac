@@ -50,8 +50,9 @@ body {
   background: rgb(82, 82, 83);
   color: black;
   text-shadow: rgb(89, 116, 138) 5px 3px 8px;
-    font-family: 'Poiret One', cursive;
-    background-image: url("./assets/cover/cover-image7.jpg"); 
+  font-family: 'Poiret One', cursive;
+  background-image: url("./assets/cover/cover-image7.jpg");
+  /* background-color: transparent;  */
     ;  
 }
 
@@ -94,8 +95,7 @@ h6 {
 p {
   font-size: 1.1rem;
   margin-top: 0;
-  color: black;
-  
+  color: #345357;
 }
 
 a {
@@ -203,10 +203,16 @@ textarea {
 }
 
 .container {
-  width: 85%;
+  width: 35%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  padding:20px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 15px;
+  border: 2px solid black;
+  opacity: 0.9;
 }
 
 .flex-row {
@@ -281,9 +287,10 @@ textarea {
   border: 2px solid black;
   opacity: 0.9;
 }
-.movie-card{
-  /* background-color: transparent; */
-}
+/* .movie-card{
+  background-color: transparent; 
+} 
+*/
 
 .img-thumbnail {
   width: auto;

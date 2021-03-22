@@ -30,16 +30,23 @@ react-router-dom
 
 
  ## Picture:
- ![Show_money](./client/src/assets/shop-shop.jpg)
+ ![Movie Maniac](./client/src/assets/images/main.png)
+ ![The details page](./client/src/assets/images/detail.png)
+ ![The sign up page](./client/src/assets/images/signup.png)
+ ![The login page](./client/src/assets/images/login.png)
  
  ## License
  For more info about the License, click on the link below.
 
  ## Links
  Link to the GitHub 
-[link](https://github.com/natashamullin/shop-til-you-drop)
+[link](https://github.com/chattean/movie-maniac)
 Link to the deployed project
-[link](https://agile-crag-50151.herokuapp.com/)
+[link](https://weareallmoviemaniacs.herokuapp.com)
+
+## Contributing
+Natasha Mullin [link](github.com/natashamullin)
+Anuj Chattean  [link](github.com/chattean)
 
 ## Questions 
 please reach me at my GubHub account or through Email if you have any questions

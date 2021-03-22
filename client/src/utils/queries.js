@@ -1,43 +1,36 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const QUERY_MOVIES = gql`
-  query getMovies($category: ID) {
-    movies(category: $category) {
+ {
+    movies{
       _id
-      name
-      description
+      title
       image
-      category {
-        _id
-      }
     }
   }
 `;
 
 export const QUERY_CATEGORIES = gql`
-{
-  categories {
-    _id
-    name
+  {
+    categories {
+      _id
+      name
+    }
   }
-}
 `;
 
-export const QUERY_USER = gql`
-{
-  user {
-    firstName
-    lastName
-    watchList {
+export const GET_ME = gql`
+  {
+    me {
       _id
-      
+      firstName
+      lastName
+      movieCount
       movies {
-        _id
-        name
-        description
+        movieId
+        title
         image
       }
     }
   }
-}
 `;

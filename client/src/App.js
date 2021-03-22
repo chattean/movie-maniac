@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Provider } from "react-redux";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import Nav from './components/Nav';
-import Movies from './components/Movies';
+// import Movies from './components/Movies';
 import store from "./utils/store";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Home from "./pages/Home"
+import SearchMovies from "./pages/SearchMovies"
 import { Switch, Route } from 'react-router-dom';
-import MovieList from './components/MovieList';
+// import MovieList from './components/MovieList';
 import Detail from "./pages/Detail"
+import WatchList from "./pages/WatchList"
+require('dotenv').config()
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -42,7 +44,8 @@ function App() {
           <Switch>
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={SearchMovies} />
+            <Route exact path="/watchList" component={WatchList} />
             <Route exact path="/movies/:id" component={Detail} />
           </Switch>
 

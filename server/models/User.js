@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 const movieSchema = require('./Movie');
 
 const userSchema = new Schema({
-    username: {
+    userName: {
         type: String,
         unique: true,
         trim: true,

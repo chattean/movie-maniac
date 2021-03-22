@@ -54,14 +54,15 @@ export const getMe = (token) => {
   // make a search to imdb movies api
   // https://www.googleapis.com/movies/v1/volumes?q=harry+potter
   export const searchIMDBMovies = (query) => {
-      return fetch(`https://movie-database-imdb-alternative.p.rapidapi.com/?s=${query}&page=1&r=json, {
+      return fetch(`https://movie-database-imdb-alternative.p.rapidapi.com/?s=${query}&page=1&r=json`, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": ${process.env.REACT_APP_IMDB_KEY},
+            "x-rapidapi-key": `${process.env.REACT_APP_IMDB_KEY}`,
             "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com"
         }
-    }`)
+    })
     // return fetch(`'https://www.googleapis.com/movies/v1/volumes?q=${query}`');
+  
   };
   
   

@@ -28,44 +28,46 @@ function Login(props) {
     };
 
     return (
-        <div className="container my-1">
-            <Link to="/signUp">
-                Go SignUp
+        <div className="card px-1 py-1">
+            <div className="container my-1">
+                <Link to="/signUp">
+                    Go SignUp
             </Link>
 
-            <h2>Login</h2>
-            <form onSubmit={handleFormSubmit}>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor="email">Email Address:</label>
-                    <input
-                        placeholder="youremail@email.com"
-                        name="email"
-                        type="email"
-                        id="email"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="flex-row space-between my-2">
-                    <label htmlFor='pwd'>Password:</label>
-                    <input
-                        placeholder="*******"
-                        name="password"
-                        type="password"
-                        id="pwd"
-                        onChange={handleChange}
-                    />
-                </div>
-                {
-                    error ? <div>
-                        <p className="error-text"> incorrect username or password.</p>
-                    </div> : null
-                }
-                <div className="flex-row flex-end">
-                    <button type="submit">
-                        Login
+                <h2>Login</h2>
+                <form onSubmit={handleFormSubmit}>
+                    <div className="flex-row space-between my-2">
+                        <label htmlFor="email">Email Address:</label>
+                        <input
+                            placeholder="youremail@email.com"
+                            name="email"
+                            type="email"
+                            id="email"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="flex-row space-between my-2">
+                        <label htmlFor='pwd'>Password:</label>
+                        <input
+                            placeholder="*******"
+                            name="password"
+                            type="password"
+                            id="pwd"
+                            onChange={handleChange}
+                        />
+                    </div>
+                    {
+                        error ? <div>
+                            <p className="error-text"> incorrect username or password.</p>
+                        </div> : null
+                    }
+                    <div className="flex-row flex-end">
+                        <button type="submit">
+                            Login
                     </button>
-                </div>
-            </form>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }
